@@ -1,4 +1,4 @@
--- NSERT INTO, UPDATE .. SET e DELETE FROM 
+-- NSERT INTO, UPDATE e DELETE FROM 
 
 INSERT INTO agendamento.pessoa(nome, email, cpf, data_nasc, endereco, telefone)
 VALUES
@@ -11,3 +11,8 @@ INSERT INTO agendamento.medico(cpf_pessoa, crm)
 VALUES
   ('001', '111'),
   ('004', '112');
+
+INSERT INTO agendamento.Paciente(cpf_pessoa, senha, plano_saude)
+VALUES
+    ('002', 'senha1', 'FALSE'),
+    ('003', 'senha2', 'TRUE');
