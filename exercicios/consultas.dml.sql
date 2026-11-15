@@ -16,3 +16,9 @@ INSERT INTO agendamento.Paciente(cpf_pessoa, senha, plano_saude)
 VALUES
     ('002', 'senha1', 'FALSE'),
     ('003', 'senha2', 'TRUE');
+
+INSERT INTO agendamento.especialidade(descricao)
+VALUES 
+    ('Pediatra'),
+    ('Cardiologista'),
+    ('Ortopedista');
