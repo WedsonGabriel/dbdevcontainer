@@ -22,3 +22,9 @@ VALUES
     ('Pediatra'),
     ('Cardiologista'),
     ('Ortopedista');
+
+INSERT INTO agendamento.medicoespecialidade(cpf_medico, id_especialidade)
+VALUES
+    ('001', '01'),
+    ('004', '02'),
+    ('004', '03');
