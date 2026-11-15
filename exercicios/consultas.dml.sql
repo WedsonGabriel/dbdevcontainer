@@ -6,3 +6,8 @@ VALUES
     ('Pedro II', 'ps@email.com', '003', '1516-02-10', 'R. Flamengo', 5501),
     ('D João VI', 'dj@email.com', '001', '1415-12-01', 'R. Portugal', NULL),
     ('JJ Xavier', 'jj@email.com', '004', '1746-11-12', 'R. Minas', 5502);
+
+INSERT INTO agendamento.medico(cpf_pessoa, crm)
+VALUES
+  ('001', '111'),
+  ('004', '112');
