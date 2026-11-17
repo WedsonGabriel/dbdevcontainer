@@ -56,4 +56,33 @@ UPDATE agendamento.agendamento
     SET dh_consulta = CAST('1783-05-19' AS DATE) + CAST(dh_consulta AS TIME), valor_consulta = '150' 
     WHERE CAST(dh_consulta AS DATE) = '1783-05-17'
 
+-- a) O paciente "Pedro I" cancelou a consulta agendada para o dia "19-05-1783".
+DELETE FROM agendamento.agendamento
+WHERE cpf_paciente = (SELECT cpf FROM agendamento.pessoa WHERE nome = 'Pedro I')
+  AND CAST(dh_consulta AS DATE) = '1783-05-19';
+
+-- b) Remover os agendamentos com o médico "D João VI" com o custo de R$ 0,00. Utilize essas duas condições no comando DELETE.
+DELETE FROM agendamento.agendamento
+WHERE cpf_medico = (SELECT cpf FROM agendamento.pessoa WHERE nome = 'D João VI')
+  AND valor_consulta = 0;
+
+-- c) Remover os pacientes que possuem plano de saúde ou que não possuem telefone.
+DELETE FROM agendamento.agendamento
+WHERE cpf_paciente = '003' OR cpf_paciente = '001';
+
+DELETE FROM agendamento.paciente
+WHERE plano_saude = TRUE OR cpf_pessoa = '001';
+
+-- d) O médico "JJ Xavier" deve ser removido da base de dados. tem que tirar as FK antes de apagar, o postgres nao deixa apagar com elas
+DELETE FROM agendamento.agendamento
+WHERE cpf_medico = (SELECT cpf FROM agendamento.pessoa WHERE nome = 'JJ Xavier');
+
+DELETE FROM agendamento.medicoespecialidade
+WHERE cpf_medico = (SELECT cpf FROM agendamento.pessoa WHERE nome = 'JJ Xavier');
+
+DELETE FROM agendamento.medico
+WHERE cpf_pessoa = (SELECT cpf FROM agendamento.pessoa WHERE nome = 'JJ Xavier');
+
+DELETE FROM agendamento.pessoa
+WHERE nome = 'JJ Xavier';
 
